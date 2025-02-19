@@ -1,0 +1,5 @@
+#a tab separated file
+col1    col2   col3
+a   1 80
+#this is a comment
+b   -99   NaN

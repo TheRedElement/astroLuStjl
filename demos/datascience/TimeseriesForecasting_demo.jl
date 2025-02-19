@@ -7,9 +7,9 @@ using Revise
 using StatsBase
 # Random.seed!(1)
 
-include(joinpath(@__DIR__, "../src/PlotStyleLuSt.jl"))
-include(joinpath(@__DIR__, "../src/Preprocessing.jl"))
-include(joinpath(@__DIR__, "../src/TimeseriesForecasting.jl"))
+include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
+include(joinpath(@__DIR__, "../../src/preprocessing/Preprocessing.jl"))
+include(joinpath(@__DIR__, "../../src/datascience/TimeseriesForecasting.jl"))
 using .Preprocessing
 using .PlotStyleLuSt
 using .TimeseriesForecasting

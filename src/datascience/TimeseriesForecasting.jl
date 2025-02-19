@@ -27,7 +27,7 @@
 
     Examples
     --------
-        - see [../src_demos/TimeseriesForecasting_demo.jl](../src_demos/TimeseriesForecasting_demo.jl)
+        - see [../demos/TimeseriesForecasting_demo.jl](../demos/TimeseriesForecasting_demo.jl)
 """
 
 module TimeseriesForecasting

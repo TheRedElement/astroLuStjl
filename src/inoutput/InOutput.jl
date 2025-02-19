@@ -1,6 +1,18 @@
 
+#TODO: implement examples
+
 """
-    - script containing functions to load different file structures
+    - module implementing methods to load different file structures
+
+    Structs
+    -------
+
+    Functions
+    ---------
+        - `read_psv()`
+
+    Extended Functions
+    ------------------
 
     Dependencies
     ------------
@@ -9,18 +21,31 @@
 
     Comments
     --------
+
+    Examples
+    --------
+        - see [../demos/InOutput_demo.jl](../demos/InOutput_demo.jl)
+
 """
 
+module InOutput
 
 #%%imports
 using CSV
 using DataFrames
 
+#import for extending
+
+#intradependencies
+
+#%%exports
+export read_psv
+
 #%%definitions
 """
     - reader for "Pattern Separated Value"-files (PSV)
     - wrapper function around `CSV.File()`
-    - enables the user to load file with arbitrary separation pattern (defined by `Regex`)
+    - enables the user to load file with arbitrary separation pattern (defined by `seq`)
 
     Parameters
     ----------
@@ -74,34 +99,6 @@ function read_psv(
     return df
 end
 
-# #examples
-# using Glob
-
-# ####################################
-# #SDSS
-# fnames = Glob.glob("../data/sdss_sn_lcs/*.sum", @__DIR__)
-# # println(fnames)
-# println(fnames[1])
-
-# df = read_psv(fnames[1]; sep=r"\ +", csv_file_kwargs=Dict(:comment=>"#", :header=>false, :normalizenames=>true))
-# #get header (last comment `#``)
-# header = readlines(fnames[1])
-# header = lowercase.(split(filter(contains(r"^#"), header)[end], r"\s+"))
-# header[1] = header[1][2:end]
-# rename!(df, header)
-# display(df)
+end #module
 
 
-# #####################################
-# #TESS
-# fnames = Glob.glob("../data/tess_sn_lcs/*.txt", @__DIR__)
-# # println(fnames)
-# println(fnames[1])
-
-# df = read_psv(fnames[1]; sep=r"\ +", csv_file_kwargs=Dict(:comment=>"#", :header=>false, :normalizenames=>true))
-# #get header (last comment `#``)
-# header = readlines(fnames[1])
-# header = lowercase.(split(filter(contains(r"^#"), header)[end], r"\s+"))
-# println(header)
-# rename!(df, header[2:end])
-# display(df)
