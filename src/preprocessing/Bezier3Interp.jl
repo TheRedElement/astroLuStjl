@@ -50,8 +50,7 @@ export Bz3Interp
 export bezier
 export fit
 export transform
-export plot
-export plot!
+export plot, plot!
 
 #%%definitions
 
@@ -221,11 +220,15 @@ end
             - will be distributed across the number of segments
                 - i.e. one less than the number of datapoints used for fitting
             - to ensure your number of points is met, make sure to pass a number divisible by the number of segments
+        - `verbose`
+            - `Int`, optional
+            - verbosity level
+            - the default is `0`
 
     Raises
     ------
         - `AssertionError`
-            - if the model has not been fit yet
+            - if the model has not been fitted yet
 
     Returns
     -------
@@ -241,6 +244,7 @@ end
 function transform(
     b3i::Bz3Interp,
     n::Int,
+    verbose::Int=0,
     )::AbstractArray
 
     @assert b3i.state == :fitted "`b3i` has not been fitted yet. make sure to call `fit(b3i,...)` before transforming"

@@ -4,7 +4,7 @@
 
     Constants
     ---------
-    
+
     Structs
     -------
         - `ARIMA`
@@ -203,7 +203,7 @@ function un_difference(
 end
 
 #######################################
-#%%Auto-Regression
+#Auto-Regression
 """
     - struct defining an Auto-Regressive estimator
 
@@ -446,7 +446,7 @@ function Plots.plot(
 end
 
 #######################################
-#%%Moving Average
+#Moving Average
 """
     - struct defining a Moving-Average estimator
 
@@ -705,7 +705,7 @@ function Plots.plot(
 end
 
 #######################################
-#%%ARIMA
+#ARIMA
 """
     - struct defining an ARIMA (Auto Regressive Integrated Moving Average) estimator
 
@@ -967,7 +967,7 @@ function Plots.plot(
 end
 
 #######################################
-#%%Recursive-Polynomial-Regressor
+#Recursive-Polynomial-Regressor
 """
     - struct defining a recursive polynomial regressor based
     - will fit a polynomial for every step and use the polynomial to predict the next step
