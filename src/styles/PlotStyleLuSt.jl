@@ -23,12 +23,12 @@
         - `mono_colors`
             - `Vector{RGB}`
             - colors used in monochromatic styles
+            
+    Structs
+    -------
 
     Functions
     ---------
-
-    Structs
-    -------
 
     Dependencies
     ------------
@@ -53,6 +53,7 @@
 
     Examples
     --------
+        - see [PlotStyleLuSt_demo.jl](./../demos/styles/PlotStyleLuSt_demo.jl)
         - loading the styles
 ```julia
     using Plots
@@ -82,13 +83,21 @@ using Plots
 using PlotThemes
 using Revise
 
+#import for extending
+import Plots: plot, plot!
+
+#intradependencies
+
 #%%exports
 export mono_ls
 export mono_markers
 export mono_colors
 
 
-#%%functions
+#%%definitions
+
+#######################################
+#helper functions
 """
     - function to interleave two vectors
 
@@ -131,7 +140,8 @@ function interleave(
 
 end
 
-#%%custom styles
+#######################################
+#custom styles
 begin #specify layout, sizes, ...
     layout_specs = Dict([
         #fontsizes
@@ -382,7 +392,8 @@ begin #tre_light
 end
 
 
-#%%include custom styles
+#######################################
+#include custom styles
 PlotThemes.add_theme(:lust_dark, _lust_dark)
 PlotThemes.add_theme(:lust_light, _lust_light)
 PlotThemes.add_theme(:lust_light_mono, _lust_light_mono)

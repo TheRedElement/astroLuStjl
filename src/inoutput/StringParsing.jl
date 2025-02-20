@@ -25,7 +25,7 @@
 
     Examples
     --------
-        - see [../src_demos/StringParsing_demo.jl](../src_demos/StringParsing_demo.jl)
+        - see [StringParsing_demo.jl](../../demos/inoutput/StringParsing_demo.jl)
 
 """
 module StringParsing

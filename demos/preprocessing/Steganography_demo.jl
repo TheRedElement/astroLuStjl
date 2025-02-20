@@ -6,6 +6,7 @@ using Revise
 
 include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
 include(joinpath(@__DIR__,"../../src/preprocessing/Steganography.jl"))
+using .PlotStyleLuSt
 using .Steganography
 
 theme(:tre_dark)
@@ -55,6 +56,7 @@ function get_host(xpix::Int, ypix::Int)::AbstractMatrix
     return x_host
 end
 
+#%%demos
 begin #LSBSteganography
 
     #setup

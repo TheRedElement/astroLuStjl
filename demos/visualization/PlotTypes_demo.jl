@@ -9,49 +9,46 @@ using Random
 using Revise
 
 #custom modules
-include(joinpath(@__DIR__, "../src/Bezier3Interp.jl"))
-include(joinpath(@__DIR__, "../src/PlotStyleLuSt.jl"))
-include(joinpath(@__DIR__, "../src/PlotTypes.jl"))
-include(joinpath(@__DIR__, "../src/Scaling.jl"))
+include(joinpath(@__DIR__, "../../src/preprocessing/Bezier3Interp.jl"))
+include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
+include(joinpath(@__DIR__, "../../src/visualization/PlotTypes.jl"))
+include(joinpath(@__DIR__, "../../src/preprocessing/Scaling.jl"))
+using .Bezier3Interp
 using .PlotStyleLuSt
 using .PlotTypes
 using .Scaling
 
-# theme(:lust_dark)
-# theme(:lust_light)
-# theme(:lust_dark_mono)
-# theme(:lust_light_mono)
 theme(:tre_dark)
-# theme(:tre_light)
-
 
 gr()
 # plotlyjs()
 # pgfplotsx()   #supports latex output
 
+#%%definitions
 
+#%%demos
 begin #hatched histograms
-    # hg1 = PlotTypes.hatched_histogram(
-    #     randn(300);
-    #     k=-5, offset=2, npoints=50, ls=:dash,
-    #     normalize=:false, fillalpha=.8, fillcolor=1
-    # )
+    hg1 = PlotTypes.hatched_histogram(
+        randn(300);
+        k=-5, offset=2, npoints=50, ls=:dash,
+        normalize=:false, fillalpha=.8, fillcolor=1
+    )
 
-    # x = randn(300)
-    # p2 = plot(-3:.1:3, pdf(Normal(0,1), -3:.1:3); label="")
-    # # p3 = plot()
-    # PlotTypes.hatched_histogram!(
-    #     p2, x;
-    #     k=-0.1, offset=0.02, ls=:dashdot,
-    #     normalize=:true, fillalpha=0.0
-    # )
-    # PlotTypes.hatched_histogram!(
-    #     p2, x;
-    #     k=0.1, offset=0.02, ls=:dashdot,
-    #     normalize=:true, fillalpha=0.0,
-    # )
+    x = randn(300)
+    p2 = plot(-3:.1:3, pdf(Normal(0,1), -3:.1:3); label="")
+    # p3 = plot()
+    PlotTypes.hatched_histogram!(
+        p2, x;
+        k=-0.1, offset=0.02, ls=:dashdot,
+        normalize=:true, fillalpha=0.0
+    )
+    PlotTypes.hatched_histogram!(
+        p2, x;
+        k=0.1, offset=0.02, ls=:dashdot,
+        normalize=:true, fillalpha=0.0,
+    )
 
-    # display(plot(hg1, p2; layout=(1,2), xlabel="x", ylabel="y", size=(1200,400)))
+    display(plot(hg1, p2; layout=(1,2), xlabel="x", ylabel="y", size=(1200,400)))
 end
 
 begin #parallel coordinates

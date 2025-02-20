@@ -6,8 +6,10 @@ using Revise
 
 
 #custom modules
-include(joinpath(@__DIR__, "../src/StringParsing.jl"))
+include(joinpath(@__DIR__, "../../src/inoutput/StringParsing.jl"))
 using .StringParsing
+
+#%%definitions
 
 #%%demos
 begin ##parsing `CompoundPeriod`

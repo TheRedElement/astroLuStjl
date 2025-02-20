@@ -18,6 +18,13 @@
         - `DataFrames`
         - `Random`
 
+    Comments
+    --------
+
+    Examples
+    --------
+        - see [Preprocessing_demo.jl](../../demos/preprocessing/Preprocessing_demo.jl)
+
 """
 
 module Preprocessing

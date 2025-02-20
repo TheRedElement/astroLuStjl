@@ -29,11 +29,17 @@
         - `Plots`
         - `StatsBase`
 
+
+    Comments
+    --------
+
     Examples
     --------
-        - see [../src_demos/Binning_demo.jl](../src_demos/Binning_demo.jl)
+        - see [Binning_demo.jl](../../demos/preprocessing/Binning_demo.jl)
     
 """
+
+module DataBinning
 
 #%%imports
 using LaTeXStrings
@@ -45,6 +51,17 @@ using StatsBase
 import Plots: plot, plot!
 
 #intradependencies
+
+#%%exports
+export Binning
+export BinningResult
+export generate_bins_int
+export generate_bins_pts
+export generate_bins_centered
+export generate_bins_phys
+export fit
+export transform
+export plot, plot!
 
 #%%definitions
 
@@ -590,7 +607,6 @@ function Plots.plot!(plt::Plots.Plot,
     bg = Plots.default(:bg)         #background
     ms = Plots.default(:ms)         #markersize
 
-
     #input scatter (only if `x` and ` y` were passed)
     if ~isnothing(x) && ~isnothing(y)
         scatter!(plt, x, y; label="Input")
@@ -600,7 +616,7 @@ function Plots.plot!(plt::Plots.Plot,
     plot!(plt,
         br.x_binned, br.y_binned,
         xerr=br.x_std, yerr=br.y_std,
-        ls=:solid, lw=2.5*lw, color=bg, markerstrokecolor=bg, ms=1.5*ms,
+        ls=:solid, lw=lw, color=bg, markerstrokecolor=bg, ms=ms,
         marker=:circle, label=""
     )
     plot!(plt,
@@ -622,4 +638,4 @@ function Plots.plot(
     return plt
 end
 
-
+end #module

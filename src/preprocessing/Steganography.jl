@@ -22,9 +22,12 @@
     ------------
         - `ImageCore`
     
+    Comments
+    --------
+    
     Examples
     --------
-        -  see [../demos/preprocessing/Steganography_demo.jl](../demos/preprocessing/Steganography_demo.jl)
+        -  see [Steganography_demo.jl](../../demos/preprocessing/Steganography_demo.jl)
 """
 
 module Steganography

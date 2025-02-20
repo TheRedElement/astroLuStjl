@@ -1,5 +1,5 @@
 """
-    - module implementing sigma-clipping
+    - module implementing methods for outlier removal
 
     
     Structs
@@ -21,8 +21,6 @@
     
     Dependencies
     ------------
-        - `Binning.jl` (this package)
-        - `FormattingUtils.jl` (this package)
         - `Interpolations`
         - `LaTeXStrings`
         - `NaNStatistics`
@@ -31,8 +29,10 @@
 
     Examples
     --------
-        - see [../src_demos/SigmaClipping_demo.jl](../src_demos/SigmaClipping_demo.jl)
+        - see [OutlierRemoval_demo.jl](../../demos/preprocessing/OutlierRemoval_demo.jl)
 """
+
+module OutlierRemoval
 
 #%%imports
 using Interpolations
@@ -45,8 +45,19 @@ using Polynomials
 import Plots: plot, plot!
 
 #intradependencies
-include(joinpath(@__DIR__, "./Binning.jl"))
-include(joinpath(@__DIR__, "./FormattingUtils.jl"))
+include(joinpath(@__DIR__, "../preprocessing/DataBinning.jl"))
+include(joinpath(@__DIR__, "../monitoring/FormattingUtils.jl"))
+using .DataBinning
+using .FormattingUtils
+
+#%%exports
+export SigmaClipping
+export SigmaClippingResult
+export fit_bng
+export fit_poly
+export fit
+export transform
+export plort, plot!
 
 #%%definitions
 
@@ -171,7 +182,7 @@ struct SigmaClippingResult
 end
 
 """
-    - function to fit `SigmaClipping` to data using `Binning` for the representative function
+    - function to fit `SigmaClipping` to data using `DataBinning.Binning` for the representative function
     - i.e. exectues sigma-clipping given the parameters of `SigmaClipping`
     
     Parameters
@@ -187,7 +198,7 @@ end
             - y-values of the dataseries to be clipped
         - `generate_bins`
             - `Function`, optional
-            - function to be used to generate the bins for `Binning` in each iteration `k`
+            - function to be used to generate the bins for `DataBinning.Binning` in each iteration `k`
             - has to take at least 2 args and 1 kwarg
                 - `x[clip_mask]`
                     - x-values of the current iterations
@@ -195,19 +206,19 @@ end
                 - `generate_bins_kwargs`
             - will be called as `generate_bins(x[clip_mask], generate_bins_args...; generate_bins_kwargs...)`
             - the default is `nothing`
-                - will be set to `Binning.generate_bins_pts()`
+                - will be set to `DataBinning..generate_bins_pts()`
         - `y_start`
             - `Real`, optional
             - value to use for the first datapoint in `y_repr`
                 - ensures that `y_repr(minimum(x))` exists
-                - necessary because `Binning` will not cover the complete interpolation range
+                - necessary because `DataBinning.Binning` will not cover the complete interpolation range
             - the default is `nothing`
                 - will be set to `y_repr[1]` for every iteration
         - `y_end`
             - `Real`, optional
             - value to use for the last datapoint in `y_repr`
                 - ensures that `y_repr(maximum(x))` exists
-                - necessary because `Binning` will not cover the complete interpolation range
+                - necessary because `DataBinning.Binning` will not cover the complete interpolation range
             - the default is `nothing`
                 - will be set to `y_repr[end]` for every iteration
         - `verbose`
@@ -227,7 +238,7 @@ end
                 - will be set to `(verbose=verbose-3,)`
         - `binning_kwargs`
             - `NamedTuple`, optional
-            - additional kwargs to pass to `Binning`
+            - additional kwargs to pass to `DataBinning.Binning`
             - the default is `nothing`
                 - will be set to `()`
     
@@ -255,7 +266,7 @@ function fit_bng(
     ):: SigmaClippingResult where {T<:Real}
 
     #default parameter
-    generate_bins           = isnothing(generate_bins) ? generate_bins_pts : generate_bins
+    generate_bins           = isnothing(generate_bins) ? DataBinning.generate_bins_pts : generate_bins
     generate_bins_args      = isnothing(generate_bins_args)   ? () : generate_bins_args
     generate_bins_kwargs    = isnothing(generate_bins_kwargs) ? (verbose=verbose-3,) : generate_bins_kwargs
     binning_kwargs          = isnothing(binning_kwargs)       ? () : binning_kwargs
@@ -276,13 +287,13 @@ function fit_bng(
             verbose=verbose,
         )
 
-        #init `Binning` for current iteration
+        #init `DataBinning.Binning` for current iteration
         bins = generate_bins(x[clip_mask], generate_bins_args...; generate_bins_kwargs...)
-        bng = Binning(bins; binning_kwargs...)
+        bng = DataBinning.Binning(bins; binning_kwargs...)
         
         #get repr curve
-        br = fit(bng, x[clip_mask], y[clip_mask]; verbose=verbose-2)
-        x_repr, y_repr, x_std, y_std = transform(br)
+        br = DataBinning.fit(bng, x[clip_mask], y[clip_mask]; verbose=verbose-2)
+        x_repr, y_repr, x_std, y_std = DataBinning.transform(br)
         
         #set `y_start` and `y_end` for the iteration accordingly
         y_start_k = isnothing(y_start) ? copy(y_repr[1])     : y_start
@@ -434,14 +445,14 @@ end
             - `AbstractFloat`, optional
             - value to use for the first datapoint in `y_repr`
                 - ensures that `y_repr(minimum(x))` exists
-                - necessary because `Binning` will not cover the complete interpolation range
+                - necessary because `DataBinning.Binning` will not cover the complete interpolation range
             - the default is `nothing`
                 - will be set to `y[1]`
         - `y_end`
             - `AbstractFloat`, optional
             - value to use for the last datapoint in `y_repr`
                 - ensures that `y_repr(maximum(x))` exists
-                - necessary because `Binning` will not cover the complete interpolation range
+                - necessary because `DataBinning.Binning` will not cover the complete interpolation range
             - the default is `nothing`
                 - will be set to `y[end]`
         - `p_deg`
@@ -569,7 +580,6 @@ function transform(
 
 end
 
-
 """
     - extensions to `Plots.plot!()` and `Plots.plot()`
 
@@ -665,3 +675,4 @@ function Plots.plot(
     return plt
 end
 
+end #module

@@ -16,6 +16,9 @@ using .TimeseriesForecasting
 
 theme(:tre_dark)
 
+#%%definitions
+
+#%%demos
 begin #RecursivePolynomialRegressor
     #%%generate some data
     deg = 8

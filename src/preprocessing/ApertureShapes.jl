@@ -34,7 +34,7 @@
 
     Examples
     --------
-        - see[../src_demos/ApertureShapes_demo.jl](../src_demos/ApertureShapes_demo.jl)
+        - see[ApertureShapes_demo.jl](../../demos/preprocessing/ApertureShapes_demo.jl)
 """
 module ApertureShapes
 
@@ -45,7 +45,11 @@ using Plots
 using Polynomials
 using Printf
 
-#exports
+#import for extending
+
+#intradependencies
+
+#%%exports
 export ApertureTemplate
 export ApertureMask
 export lorentz
@@ -57,11 +61,10 @@ export plot_aperture
 export plot_aperture!
 export print_aperture
 
-#intradependencies
+#%%definitions
 
-#import for extending
-
-#%%helper functions
+#######################################
+#helper functions
 """
     - funtion computing a lorentzian profile
     - \$L = \frac{1}{1+x^2}\$
@@ -103,6 +106,7 @@ function lorentz(
 
 end
 
+#######################################
 #%%aperture templates
 """
 
@@ -203,6 +207,7 @@ struct ApertureMask{T <: Number}
     mask::AbstractMatrix{T}
 end
 
+#######################################
 #%%aperture shapes
 """
     - function to generate a grid of coordinates used to define the aperture mask

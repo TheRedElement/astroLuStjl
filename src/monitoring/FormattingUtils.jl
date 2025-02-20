@@ -2,70 +2,101 @@
 #TODO: docstrings + formatting of code
 
 """
-        - function to print a formatted logging message
+    - module implementing methods for custom formatting
 
-        Parameters
-        ----------
-            - `msg`
-                - `String`
-                - message to be printed
-            - `context`
-                - `String`, `Nothing`, optional
-                - context to the printed message
-                - the default is `nothing`
-                    - will print `''`
-            - `type`
-                - `Symbol`, optional
-                - type of the message
-                - allowed `Symbol`s are
-                    - `:INFO`
-                    - `:WARNING`
-                - the default is `:INFO`
-            - `level`
-                - `Int`, optional
-                - level of the message
-                - will append `repeat(start,level)` at the start of the message
-                    - i.e., indent the message
-                - the default is 0
-                    - no indentation
-            - `start`
-                - `String`, `Nothing`, optional
-                - string used to mark levels
-                - will print `repeat(start,level)` before `msg`
-                - the default is `nothing`
-                    - will be set to `"    "`
-                    - i.e., 4 spaces
-                    - do not  use something like `" "^4`, since that can sometimes be interpreted as an integer!
-            - `verbose`
-                - `Int`, optional
-                - verbosity level
-                - the default is `0`
-            - `printstyled_kwargs`
-                - `Dict`, optional
-                - kwargs to pass to `printstyled()`
-                - the default is `nothing`
-                    - will be set to `Dict()`
+    Structs
+    -------
 
-        Raises
-        ------
-            - `MethodError: no method matching repeat(::UInt8, ::Int64)`
-                - sometimes raised when passing something like `start=" "^4`
-                - not known why this is the case
+    Functions
+    ---------
+        - `printlog()`
 
-        Returns
-        -------
+    Extended Functions
+    ------------------
 
-        Dependencies
-        ------------
+    Dependencies
+    ------------
+    
+    Comments
+    --------
 
-        Comments
-        --------
-            - passing `start` for example in the form of `start=" "^4` can sometimes lead to an error for some reason
+    Examples
+    --------
+        - see [FormattingUtils_demo.jl](../../demos/monitoring/FormattingUtils_demo.jl)
 """
+
 module FormattingUtils
 
+#%%imports
+
+#import for extending
+
+#intradependencies
+
+#%%exports
 export printlog
 
+"""
+    - function to print a formatted logging message
+
+    Parameters
+    ----------
+        - `msg`
+            - `String`
+            - message to be printed
+        - `context`
+            - `String`, `Nothing`, optional
+            - context to the printed message
+            - the default is `nothing`
+                - will print `''`
+        - `type`
+            - `Symbol`, optional
+            - type of the message
+            - allowed `Symbol`s are
+                - `:INFO`
+                - `:WARNING`
+            - the default is `:INFO`
+        - `level`
+            - `Int`, optional
+            - level of the message
+            - will append `repeat(start,level)` at the start of the message
+                - i.e., indent the message
+            - the default is 0
+                - no indentation
+        - `start`
+            - `String`, `Nothing`, optional
+            - string used to mark levels
+            - will print `repeat(start,level)` before `msg`
+            - the default is `nothing`
+                - will be set to `"    "`
+                - i.e., 4 spaces
+                - do not  use something like `" "^4`, since that can sometimes be interpreted as an integer!
+        - `verbose`
+            - `Int`, optional
+            - verbosity level
+            - the default is `0`
+        - `printstyled_kwargs`
+            - `Dict`, optional
+            - kwargs to pass to `printstyled()`
+            - the default is `nothing`
+                - will be set to `Dict()`
+
+    Raises
+    ------
+        - `MethodError: no method matching repeat(::UInt8, ::Int64)`
+            - sometimes raised when passing something like `start=" "^4`
+            - not known why this is the case
+
+    Returns
+    -------
+
+    Dependencies
+    ------------
+
+    Comments
+    --------
+        - passing `start` for example in the form of `start=" "^4` can sometimes lead to an error for some reason
+"""
 function printlog(
     msg::String;
     context::Union{String,Nothing}=nothing,
@@ -97,14 +128,3 @@ end
 
 
 end #module
-
-# #%%examples
-# printf(
-#     "This is a test",
-#     context=nothing,
-#     type=:INFO,
-#     level=2,
-#     start=">"^4,
-#     verbose=2,
-#     printstyled_kwargs=Dict(:color=>:blue),
-# )

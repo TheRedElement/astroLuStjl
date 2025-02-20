@@ -1,3 +1,4 @@
+#TODO: minmaxscaler(): transform to struct with `fit()` and `transform()`
 #TODO: documentation
 """
     - module implementing ...
@@ -18,6 +19,8 @@
     ------------
         - `NaNStatistics`
 
+    Comments
+    --------
 
     Examples
     --------
@@ -33,10 +36,12 @@ import Plots: plot, plot!
 
 #intradependencies
 
+#%%exports
+export ARIMA
+
 #%%definitions
 """
 """
-#TODO: transform to struct with `fit()` and `transform()`
 function minmaxscaler(
     x::AbstractArray, xmin::T=0.0, xmax::T=1.0;
     )::AbstractArray where {T <: Real}

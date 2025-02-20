@@ -1,3 +1,5 @@
+#TODO: not working for some reason!
+
 """
     - module implementing functionalities for monitoring executions of scripts, functions etc.
 
@@ -12,12 +14,35 @@
     ------------
         - `Dates`
     
-        Comments
+    Comments
     --------
+
+    Examples
+    --------
+        - see [Monitoring_demo.jl](../../demos/monitoring/Monitoring_demo.jl)    
 """
+
+module Monitoring
 
 #%%imports
 using Dates
+
+#import for extending
+
+#intradependencies
+include(joinpath(@__DIR__,"../monitoring/FormattingUtils.jl"))
+using .FormattingUtils
+
+#%%exports
+export exectimer
+
+FormattingUtils.printlog(
+    "This module is currently not working! Do not use!\n",
+    context="`Monitoring.jl`",
+    type=:WARNING,
+    verbose=1,
+    printstyled_kwargs=Dict(:color=>:yellow)
+)
 
 #%%definitions
 """
@@ -103,17 +128,5 @@ macro exectimer(
     end
 end
 
-# #examples
-# using DataFrames
-# function testfunc(x)
-#     sleep(.1)
-#     return x^2
-# end
+end #module
 
-# x = 1:10
-# r1, stats1 = @exectimer testfunc.(x) "Exec$(1) - Start"
-# r2, stats2 = @exectimer testfunc.(x.+1) "" "Exec2 - End"
-# println(r1)
-
-# df = DataFrame([stats1,stats2])
-# println(df)

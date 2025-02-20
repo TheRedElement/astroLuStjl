@@ -25,9 +25,12 @@
         - `LinearAlgebra`
         - `Plots`
 
+    Comments
+    --------
+
     Examples
     --------
-        - see [../src_demos/Bezier3Interp_demo.jl](../src_demos/Bezier3Interp_demo.jl)
+        - see [Bezier3Interp_demo.jl](../../demos/preprocessing/Bezier3Interp_demo.jl)
 """
 
 module Bezier3Interp
@@ -41,7 +44,6 @@ using Plots
 import Plots: plot, plot!
 
 #intradependencies
-include(joinpath(@__DIR__, "./FormattingUtils.jl"))
 
 #%%exports
 export Bz3Interp

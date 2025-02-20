@@ -24,7 +24,7 @@
 
     Examples
     --------
-        - see [../demos/InOutput_demo.jl](../demos/InOutput_demo.jl)
+        - see [InOutput_demo.jl](../../demos/inoutput/InOutput_demo.jl)
 
 """
 

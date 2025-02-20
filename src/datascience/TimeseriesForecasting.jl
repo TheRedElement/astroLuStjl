@@ -2,6 +2,9 @@
 """
     - module implementing methods for timeseries forecasting
 
+    Constants
+    ---------
+    
     Structs
     -------
         - `ARIMA`
@@ -25,9 +28,12 @@
         - `Plots`
         - `NaNStatistics`
 
+    Comments
+    --------
+
     Examples
     --------
-        - see [../demos/TimeseriesForecasting_demo.jl](../demos/TimeseriesForecasting_demo.jl)
+        - see [TimeseriesForecasting_demo.jl](../../demos/datascience/TimeseriesForecasting_demo.jl)
 """
 
 module TimeseriesForecasting
@@ -40,8 +46,8 @@ using Plots
 import Plots: plot, plot!
 
 #intradependencies
-include(joinpath(@__DIR__,"./FormattingUtils.jl"))
-include(joinpath(@__DIR__,"./Preprocessing.jl"))
+include(joinpath(@__DIR__,"../monitoring/FormattingUtils.jl"))
+include(joinpath(@__DIR__,"../preprocessing/Preprocessing.jl"))
 using .FormattingUtils
 using .Preprocessing
 
