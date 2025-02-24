@@ -58,6 +58,7 @@ function build_project_toml(
     toml["maintainer_email"]= astroLuStjl.__maintainer_email__
     toml["url"]             = astroLuStjl.__url__
     toml["credits"]         = astroLuStjl.__credits__
+    toml["last_changed"]    = astroLuStjl.__last_changed__
     toml["uuid"]            = string(UUIDs.uuid4())
 
     println(toml)

@@ -19,10 +19,10 @@
 
     Examples
     --------
-        - see [Monitoring_demo.jl](../../demos/monitoring/Monitoring_demo.jl)    
+        - see [Timing_demo.jl](../../demos/Monitoring/Timing_demo.jl)    
 """
 
-module Monitoring
+module Timing
 
 #%%imports
 using Dates
@@ -30,15 +30,15 @@ using Dates
 #import for extending
 
 #intradependencies
-include(joinpath(@__DIR__,"../monitoring/FormattingUtils.jl"))
-using .FormattingUtils
+include(joinpath(@__DIR__, "../../Styles/Styles.jl"))
+using .Styles.FormattingUtils
 
 #%%exports
 export exectimer
 
 FormattingUtils.printlog(
     "This module is currently not working! Do not use!\n",
-    context="`Monitoring.jl`",
+    context="`Timing.jl`",
     type=:WARNING,
     verbose=1,
     printstyled_kwargs=Dict(:color=>:yellow)

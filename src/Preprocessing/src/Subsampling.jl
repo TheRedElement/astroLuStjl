@@ -23,11 +23,11 @@
 
     Examples
     --------
-        - see [Preprocessing_demo.jl](../../demos/preprocessing/Preprocessing_demo.jl)
+        - see [Subsampling_demo.jl](../../demos/preprocessing/Subsampling_demo.jl)
 
 """
 
-module Preprocessing
+module Subsampling
 
 #%%imports
 using DataFrames

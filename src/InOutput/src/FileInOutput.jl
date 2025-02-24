@@ -24,11 +24,11 @@
 
     Examples
     --------
-        - see [InOutput_demo.jl](../../demos/inoutput/InOutput_demo.jl)
+        - see [FileInOutput_demo.jl](../../demos/InOutput/FileInOutput_demo.jl)
 
 """
 
-module InOutput
+module FileInOutput
 
 #%%imports
 using CSV

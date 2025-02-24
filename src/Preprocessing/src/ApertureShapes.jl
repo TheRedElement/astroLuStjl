@@ -34,7 +34,7 @@
 
     Examples
     --------
-        - see[ApertureShapes_demo.jl](../../demos/preprocessing/ApertureShapes_demo.jl)
+        - see[ApertureShapes_demo.jl](../../demos/Preprocessing/ApertureShapes_demo.jl)
 """
 module ApertureShapes
 

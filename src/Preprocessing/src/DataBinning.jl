@@ -35,7 +35,7 @@
 
     Examples
     --------
-        - see [Binning_demo.jl](../../demos/preprocessing/Binning_demo.jl)
+        - see [DataBinning_demo.jl](../../demos/Preprocessing/DataBinning_demo.jl)
     
 """
 

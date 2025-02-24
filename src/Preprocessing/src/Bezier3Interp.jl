@@ -30,7 +30,7 @@
 
     Examples
     --------
-        - see [Bezier3Interp_demo.jl](../../demos/preprocessing/Bezier3Interp_demo.jl)
+        - see [Bezier3Interp_demo.jl](../../demos/Preprocessing/Bezier3Interp_demo.jl)
 """
 
 module Bezier3Interp

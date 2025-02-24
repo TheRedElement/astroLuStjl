@@ -33,7 +33,7 @@
 
     Examples
     --------
-        - see [TimeseriesForecasting_demo.jl](../../demos/datascience/TimeseriesForecasting_demo.jl)
+        - see [TimeseriesForecasting_demo.jl](../../demos/Datascience/TimeseriesForecasting_demo.jl)
 """
 
 module TimeseriesForecasting
@@ -46,10 +46,10 @@ using Plots
 import Plots: plot, plot!
 
 #intradependencies
-include(joinpath(@__DIR__,"../monitoring/FormattingUtils.jl"))
-include(joinpath(@__DIR__,"../preprocessing/Preprocessing.jl"))
-using .FormattingUtils
-using .Preprocessing
+include("../../Styles/Styles.jl")
+include("../../Preprocessing/Preprocessing.jl")
+using .Styles.FormattingUtils
+using .Preprocessing.Subsampling
 
 #%%exports
 export ARIMA
@@ -296,7 +296,7 @@ function fit(
     verbose::Int=0,
     )::AutoRegressor
 
-    xy_mat = Preprocessing.get_subsequences(x, ar.p+1; dim=1, stride=1, verbose=0)
+    xy_mat = Subsampling.get_subsequences(x, ar.p+1; dim=1, stride=1, verbose=0)
     x_ar = xy_mat[1:end-1,:]'
     x_ar = hcat(ones(size(x_ar,1), 1), x_ar) #add ones for intercept
     y_ar = xy_mat[end,:]
@@ -422,7 +422,7 @@ function Plots.plot!(
 
     @assert ar.state == :fitted "`ar` has not been fitted yet. make sure to call `fit(ar,...)` before plotting"
 
-    xy_mat = Preprocessing.get_subsequences(x, ar.p+1; dim=1, stride=1, verbose=0)
+    xy_mat = Subsampling.get_subsequences(x, ar.p+1; dim=1, stride=1, verbose=0)
     x_ar = xy_mat[1:end-1,:]'
     x_ar = hcat(ones(size(x_ar,1), 1), x_ar) #add ones for intercept
     y_ar = xy_mat[end,:]
@@ -537,7 +537,7 @@ function fit(
     verbose::Int=0,
     )::MovingAverage
 
-    xy_mat = Preprocessing.get_subsequences(residuals, ma.q+1; dim=1, stride=1, verbose=0)
+    xy_mat = Subsampling.get_subsequences(residuals, ma.q+1; dim=1, stride=1, verbose=0)
     x_ma = xy_mat[1:end-1,:]'
     x_ma = hcat(ones(size(x_ma,1), 1), x_ma) #add ones for intercept
     y_ma = xy_mat[end,:]
@@ -670,7 +670,7 @@ function Plots.plot!(
 
     @assert ma.state == :fitted "`ma` has not been fitted yet. make sure to call `fit(ma,...)` before plotting"
 
-    xy_resids_mat = Preprocessing.get_subsequences(residuals, ma.q+1; dim=1, stride=1, verbose=0)
+    xy_resids_mat = Subsampling.get_subsequences(residuals, ma.q+1; dim=1, stride=1, verbose=0)
     x_resids_ma = xy_resids_mat[1:end-1,:]'
     x_resids_ma = hcat(ones(size(x_resids_ma,1), 1), x_resids_ma) #add ones for intercept
     y_resids_ma = xy_resids_mat[end,:]
