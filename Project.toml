@@ -1,12 +1,12 @@
 author_email = ""
 maintainer = "Lukas Steinwender"
-name = "astroLuSt"
+name = "astroLuStjl"
 author = "Lukas Steinwender"
 credits = ""
 version = "1.0.0"
 maintainer_email = ""
 url = "https://github.com/TheRedElement/astroLuStjl"
-uuid = "d8353410-93d6-4ce2-9278-f68a908a35dc"
+uuid = "294cbad8-aa20-499f-8e3f-c15db3e73239"
 
 [compat]
 julia = "1.10.4"
