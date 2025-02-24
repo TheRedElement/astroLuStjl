@@ -6,7 +6,7 @@ credits = ""
 version = "1.0.0"
 maintainer_email = ""
 url = "https://github.com/TheRedElement/astroLuStjl"
-uuid = "d8353410-93d6-4ce2-9278-f68a908a35dc"
+uuid = "a6fc0f2a-54bf-4fd5-8abc-4c73404df423"
 
 [compat]
 julia = "1.10.4"
