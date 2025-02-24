@@ -4,7 +4,7 @@ astroLuStjl package
 
 module astroLuStjl
 
-const __modulename__ = "astroLuSt" 
+const __modulename__ = "astroLuStjl" 
 const __version__ = "1.0.0"
 const __author__ = "Lukas Steinwender"
 const __author_email__ = ""
