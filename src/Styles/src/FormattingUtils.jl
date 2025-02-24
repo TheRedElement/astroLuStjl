@@ -22,7 +22,7 @@
 
     Examples
     --------
-        - see [FormattingUtils_demo.jl](../../demos/monitoring/FormattingUtils_demo.jl)
+        - see [FormattingUtils_demo.jl](../../demos/Monitoring/FormattingUtils_demo.jl)
 """
 
 module FormattingUtils

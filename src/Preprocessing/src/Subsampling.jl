@@ -23,7 +23,7 @@
 
     Examples
     --------
-        - see [Subsampling_demo.jl](../../demos/preprocessing/Subsampling_demo.jl)
+        - see [Subsampling_demo.jl](../../demos/Preprocessing/Subsampling_demo.jl)
 
 """
 

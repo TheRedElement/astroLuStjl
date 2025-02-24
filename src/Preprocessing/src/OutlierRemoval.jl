@@ -29,7 +29,7 @@
 
     Examples
     --------
-        - see [OutlierRemoval_demo.jl](../../demos/preprocessing/OutlierRemoval_demo.jl)
+        - see [OutlierRemoval_demo.jl](../../demos/Preprocessing/OutlierRemoval_demo.jl)
 """
 
 module OutlierRemoval
@@ -45,8 +45,8 @@ using Polynomials
 import Plots: plot, plot!
 
 #intradependencies
-include("../../Preprocessing/Preprocessing.jl")
-include(joinpath(@__DIR__, "../monitoring/FormattingUtils.jl"))
+include(joinpath(@__DIR__, "../../Preprocessing/Preprocessing.jl"))
+include(joinpath(@__DIR__, "../Styles/Styles.jl"))
 using .DataBinning
 using .FormattingUtils
 

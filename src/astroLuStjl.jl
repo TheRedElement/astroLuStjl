@@ -19,27 +19,30 @@ const __credits__ = ""
 const __last_changed__ = string(Dates.today())
 
 #add submodules (make visible to parent module)
-# include("Datascience/Datascience.jl")
+include("Datascience/Datascience.jl")
 include("InOutput/InOutput.jl")
 include("Monitoring/Monitoring.jl")
-include("Preprocessing/Preprocessing.jl")   #TODO: fails due to method override
-# include("Styles/Styles.jl")
-# include("Visualization/Visualization.jl")
+include("Postprocessing/Postprocessing.jl")
+# include("Preprocessing/Preprocessing.jl")   #TODO: fails due to method override
+include("Styles/Styles.jl")
+include("Visualization/Visualization.jl")
 
 #load submodules (make visible to parent module)
-# using .Datascience
+using .Datascience
 using .InOutput
 using .Monitoring
-using .Preprocessing
-# using .Styles
-# using .Visualization
+using .Postprocessing
+# using .Preprocessing
+using .Styles
+using .Visualization
 
 #reexport submodules (make accesible to user)
-# export Datascience
+export Datascience
 export InOutput
 export Monitoring
-export Preprocessing
-# export Styles
-# export Visualization
+export Postprocessing
+# export Preprocessing
+export Styles
+export Visualization
 
 end #module

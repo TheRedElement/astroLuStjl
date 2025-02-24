@@ -27,7 +27,7 @@
     
     Examples
     --------
-        -  see [Steganography_demo.jl](../../demos/preprocessing/Steganography_demo.jl)
+        -  see [Steganography_demo.jl](../../demos/Postprocessing/Steganography_demo.jl)
 """
 
 module Steganography

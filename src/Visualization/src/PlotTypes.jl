@@ -56,10 +56,9 @@ using PGFPlotsX
 import Plots: plot, plot!
 
 #intradependencies
-include(joinpath(@__DIR__, "../preprocessing/Scaling.jl"))
-include(joinpath(@__DIR__, "../preprocessing/Bezier3Interp.jl"))
-using .Scaling
-using .Bezier3Interp
+include(joinpath(@__DIR__, "../../Preprocessing/Preprocessing.jl"))
+using .Preprocessing.Scaling
+using .Preprocessing.Bezier3Interp
 
 
 #%%exports

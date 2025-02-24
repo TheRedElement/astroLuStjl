@@ -6,8 +6,8 @@
 module InOutput
 
     #include submodules
-    include("src/FileInOutput.jl")
-    include("src/StringParsing.jl")
+    include(joinpath(@__DIR__, "./src/FileInOutput.jl"))
+    include(joinpath(@__DIR__, "./src/StringParsing.jl"))
     
     #load submodules (relative reference)
     using .FileInOutput

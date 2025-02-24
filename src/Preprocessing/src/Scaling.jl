@@ -26,7 +26,7 @@
 
     Examples
     --------
-        - see [Scaling_demo.jl](../../demos/preprocessing/Scaling_demo.jl)
+        - see [Scaling_demo.jl](../../demos/Preprocessing/Scaling_demo.jl)
 """
 
 module Scaling
