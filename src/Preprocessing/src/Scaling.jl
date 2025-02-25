@@ -202,7 +202,7 @@ function transform(
     x_scaled = x_std .* (mms.targmax-mms.targmin) .+ mms.targmin
 
     #check if only one one unique value in series (in that case return the halfway point of the target-range)
-    x_scaled = mms.datamax == mms.datamin ? zeros(size(x)).+0.5*(mms.xmax-mms.xmin) : x_scaled
+    x_scaled = mms.datamax == mms.datamin ? zeros(size(x)).+0.5*(mms.targmax-mms.targmin) : x_scaled
 
     return x_scaled
 end

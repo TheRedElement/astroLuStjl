@@ -3,10 +3,9 @@
 using Plots
 using NaNStatistics
 
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-include(joinpath(@__DIR__, "../../src/visualization/PlotTypes.jl"))
-using .PlotStyleLuSt
-using .PlotTypes
+using astroLuStjl.Styles.FormattingUtils
+using astroLuStjl.Styles.PlotStyleLuSt
+using astroLuStjl.Visualization.PlotTypes
 
 gr()
 # plotlyjs()

@@ -2,8 +2,7 @@
 #%%imports
 using Revise
 
-include(joinpath(@__DIR__, "../../src/monitoring/FormattingUtils.jl"))
-using .FormattingUtils
+using astroLuStjl.Styles.FormattingUtils
 
 #%%definitions
 

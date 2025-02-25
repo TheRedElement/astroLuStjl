@@ -46,10 +46,10 @@ using Plots
 import Plots: plot, plot!
 
 #intradependencies
+include(joinpath(@__DIR__, "../../Preprocessing/src/Subsampling.jl"))
 include(joinpath(@__DIR__, "../../Styles/Styles.jl"))
-include(joinpath(@__DIR__, "../../Preprocessing/Preprocessing.jl"))
+using .Subsampling
 using .Styles.FormattingUtils
-using .Preprocessing.Subsampling
 
 #%%exports
 export ARIMA

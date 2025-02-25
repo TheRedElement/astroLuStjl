@@ -3,12 +3,11 @@
 using Plots
 using Revise
 
-include(joinpath(@__DIR__, "../../src/preprocessing/DataBinning.jl"))
-include(joinpath(@__DIR__, "../../src/preprocessing/OutlierRemoval.jl"))
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-using .DataBinning
-using .OutlierRemoval
-using .PlotStyleLuSt
+using astroLuStjl.Preprocessing.OutlierRemoval
+using astroLuStjl.Preprocessing.DataBinning
+using astroLuStjl.Styles.PlotStyleLuSt
+using astroLuStjl.Styles.FormattingUtils
+
 theme(:tre_dark)
 
 #%%definitions

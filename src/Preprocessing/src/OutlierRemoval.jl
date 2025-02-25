@@ -45,8 +45,8 @@ using Polynomials
 import Plots: plot, plot!
 
 #intradependencies
-include(joinpath(@__DIR__, "../../Preprocessing/Preprocessing.jl"))
-include(joinpath(@__DIR__, "../Styles/Styles.jl"))
+include(joinpath(@__DIR__, "../../Preprocessing/src/DataBinning.jl"))
+include(joinpath(@__DIR__, "../../Styles/src/FormattingUtils.jl"))
 using .DataBinning
 using .FormattingUtils
 

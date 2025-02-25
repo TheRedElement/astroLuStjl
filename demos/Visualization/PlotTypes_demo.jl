@@ -9,14 +9,10 @@ using Random
 using Revise
 
 #custom modules
-include(joinpath(@__DIR__, "../../src/preprocessing/Bezier3Interp.jl"))
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-include(joinpath(@__DIR__, "../../src/visualization/PlotTypes.jl"))
-include(joinpath(@__DIR__, "../../src/preprocessing/Scaling.jl"))
-using .Bezier3Interp
-using .PlotStyleLuSt
-using .PlotTypes
-using .Scaling
+using astroLuStjl.Preprocessing.Scaling
+using astroLuStjl.Styles.FormattingUtils
+using astroLuStjl.Styles.PlotStyleLuSt
+using astroLuStjl.Visualization.PlotTypes
 
 theme(:tre_dark)
 
@@ -25,6 +21,12 @@ gr()
 # pgfplotsx()   #supports latex output
 
 #%%definitions
+function  minmaxscaler(x)
+    mms = Scaling.MinMaxScaler()
+    mms = Scaling.fit(mms, x)
+    x_scaled = Scaling.transform(mms, x)
+    return x_scaled
+end
 
 #%%demos
 begin #hatched histograms
@@ -35,7 +37,7 @@ begin #hatched histograms
     )
 
     x = randn(300)
-    p2 = plot(-3:.1:3, pdf(Normal(0,1), -3:.1:3); label="")
+    p2 = plot(-3:.1:3, Distributions.pdf(Distributions.Normal(0,1), -3:.1:3); label="")
     # p3 = plot()
     PlotTypes.hatched_histogram!(
         p2, x;
@@ -85,8 +87,8 @@ begin #parallel coordinates
         xlabel="Coordinates", ylabel="Values",
     )
     #adding the best model on top
-    df_num = select(df, :, names(df, AbstractString) .=> x -> levelcode.(categorical(x)), renamecols=false)
-    df_scaled = mapcols(Scaling.minmaxscaler, df_num)
+    df_num = select(df, :, names(df, AbstractString) .=> x -> CategoricalArrays.levelcode.(categorical(x)), renamecols=false)
+    df_scaled = mapcols(minmaxscaler, df_num)
     # xx_best, yy_best = PlotTypes.pc_bezier3_smoothing(Matrix(df_scaled[end:end,:]), yspread=0.02, dyspread=3, bzfreedom=0.2)
     xx_best, yy_best = PlotTypes.pc_sigmoid_itp(Matrix(df_scaled[end:end,:]), res=30, slopes_min=1, slopes_max=1)
     

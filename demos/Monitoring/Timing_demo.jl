@@ -3,8 +3,8 @@
 using DataFrames
 using Revise
 
-include(joinpath(@__DIR__, "../../src/monitoring/Monitoring.jl"))
-using .Monitoring
+using astroLuStjl.Monitoring.Timing
+using astroLuStjl.Styles.FormattingUtils
 
 #%%definitions
 function testfunc(x)
@@ -16,8 +16,8 @@ end
 begin #examples
 
     x = 1:10
-    r1, stats1 = Monitoring.@exectimer testfunc.(x) "Exec$(1) - Start"
-    r2, stats2 = Monitoring.@exectimer testfunc.(x.+1) "" "Exec2 - End"
+    r1, stats1 = Timing.@exectimer testfunc.(x) "Exec$(1) - Start"
+    r2, stats2 = Timing.@exectimer testfunc.(x.+1) "" "Exec2 - End"
     println(r1)
 
     df = DataFrame([stats1,stats2])

@@ -7,12 +7,10 @@ using Revise
 using StatsBase
 # Random.seed!(1)
 
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-include(joinpath(@__DIR__, "../../src/preprocessing/Preprocessing.jl"))
-include(joinpath(@__DIR__, "../../src/datascience/TimeseriesForecasting.jl"))
-using .Preprocessing
-using .PlotStyleLuSt
-using .TimeseriesForecasting
+using astroLuStjl.Datascience.TimeseriesForecasting
+using astroLuStjl.Preprocessing.Preprocessing
+using astroLuStjl.Styles.FormattingUtils
+using astroLuStjl.Styles.PlotStyleLuSt
 
 theme(:tre_dark)
 

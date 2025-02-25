@@ -4,10 +4,9 @@ using Plots
 using Random
 using Revise
 
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-include(joinpath(@__DIR__,"../../src/preprocessing/Steganography.jl"))
-using .PlotStyleLuSt
-using .Steganography
+using astroLuStjl.Postprocessing.Steganography
+using astroLuStjl.Styles.PlotStyleLuSt
+using astroLuStjl.Styles.FormattingUtils
 
 theme(:tre_dark)
 

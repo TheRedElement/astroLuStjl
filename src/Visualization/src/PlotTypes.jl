@@ -71,6 +71,12 @@ export parallel_coords!
 #######################################
 #helper functions
 sigmoid(x, tau=1) = 1/(1 + exp(-x/tau))
+function  minmaxscaler(x)
+    mms = Scaling.MinMaxScaler()
+    mms = Scaling.fit(mms, x)
+    x_scaled = Scaling.transform(mms, x)
+    return x_scaled
+end
 
 #######################################
 #hatched histogram
@@ -550,7 +556,7 @@ function parallel_coords!(plt::Plots.Plot,
     )
     #transform string columns to numeric mapping #rescale for plotting
     df_num = select(df, :, names(df, AbstractString) .=> x -> levelcode.(categorical(x)), renamecols=false)
-    df_scaled = mapcols(Scaling.minmaxscaler, df_num)
+    df_scaled = mapcols(minmaxscaler, df_num)
     
     #init  colormapping
     if isa(cmap, Symbol)

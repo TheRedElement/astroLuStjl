@@ -5,9 +5,8 @@ using Plots
 using Revise
 
 
-#custom modules
-include(joinpath(@__DIR__, "../../src/inoutput/StringParsing.jl"))
-using .StringParsing
+using astroLuStjl.InOutput.StringParsing
+using astroLuStjl.Styles.FormattingUtils
 
 #%%definitions
 

@@ -4,10 +4,9 @@ using Plots
 using Revise
 
 #custom modules
-include(joinpath(@__DIR__, "../../src/preprocessing/ApertureShapes.jl"))
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-using .ApertureShapes
-using .PlotStyleLuSt
+using astroLuStjl.Preprocessing.ApertureShapes
+using astroLuStjl.Styles.PlotStyleLuSt
+using astroLuStjl.Styles.FormattingUtils
 
 theme(:tre_dark)
 

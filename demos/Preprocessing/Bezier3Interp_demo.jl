@@ -4,10 +4,9 @@ using LaTeXStrings
 using Plots
 using Revise
 
-include(joinpath(@__DIR__, "../../src/preprocessing/Bezier3Interp.jl"))
-include(joinpath(@__DIR__, "../../src/styles/PlotStyleLuSt.jl"))
-using .Bezier3Interp
-using .PlotStyleLuSt
+using astroLuStjl.Preprocessing.Bezier3Interp
+using astroLuStjl.Styles.PlotStyleLuSt
+using astroLuStjl.Styles.FormattingUtils
 
 theme(:tre_dark)
 
