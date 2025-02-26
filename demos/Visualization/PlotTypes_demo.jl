@@ -88,7 +88,7 @@ begin #parallel coordinates
     )
     #adding the best model on top
     df_num = select(df, :, names(df, AbstractString) .=> x -> CategoricalArrays.levelcode.(categorical(x)), renamecols=false)
-    df_scaled = mapcols(minmaxscaler, df_num)
+    df_scaled = mapcols(PlotTypes.minmaxscaler, df_num)
     # xx_best, yy_best = PlotTypes.pc_bezier3_smoothing(Matrix(df_scaled[end:end,:]), yspread=0.02, dyspread=3, bzfreedom=0.2)
     xx_best, yy_best = PlotTypes.pc_sigmoid_itp(Matrix(df_scaled[end:end,:]), res=30, slopes_min=1, slopes_max=1)
     

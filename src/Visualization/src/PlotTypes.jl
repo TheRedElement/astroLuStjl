@@ -12,6 +12,7 @@
     ---------
         - `hatched_histogram()`
         - `hatched_histogram!()`
+        - `minmaxscaler()`
         - `parallel_coords()`
         - `parallel_coords!()`
 
@@ -64,6 +65,7 @@ using .Preprocessing.Bezier3Interp
 #%%exports
 export hatched_histogram
 export hatched_histogram!
+export minmaxscaler
 export parallel_coords
 export parallel_coords!
 
@@ -71,7 +73,37 @@ export parallel_coords!
 #######################################
 #helper functions
 sigmoid(x, tau=1) = 1/(1 + exp(-x/tau))
-function  minmaxscaler(x)
+
+"""
+    - function to transform a `Vector` (feature) using `MinMaxScaler`
+    - transformation to interval [0,1]
+    - used to prepare data for `parallel_coords()`
+
+    Parameters
+    ----------
+        - `x`
+            - `Vector`
+            - feature to be transformed to the interval [0,1]
+            - has to be numeric
+
+    Raises
+    ------
+
+    Returns
+    -------
+        - `x_scaled`
+            - `Vector`
+            - transformed version of `x`
+
+    Dependencies
+    ------------
+
+    Comments
+    --------
+"""
+function minmaxscaler(
+    x::Vector
+    )::Vector
     mms = Scaling.MinMaxScaler()
     mms = Scaling.fit(mms, x)
     x_scaled = Scaling.transform(mms, x)
@@ -543,6 +575,7 @@ function parallel_coords!(plt::Plots.Plot,
     )
 
     #default parameters
+    slopes_max = size(df,1) == 1 ? slopes_min : slopes_max  #in case a dataframe with a single row gets passed, adapt slopes to be the minimum value
     ##yticks
     ytickfontsize       = isnothing(ytickfontsize)   ? Int(round(2/3*Plots.default(:tickfontsize))) : ytickfontsize
     ytickalpha          = isnothing(ytickalpha)      ? Plots.default(:gridalpha) : ytickalpha
