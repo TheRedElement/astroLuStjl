@@ -32,6 +32,7 @@
 module FormattingUtils
 
 #%%imports
+using Colors
 
 #import for extending
 
