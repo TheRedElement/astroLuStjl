@@ -4,7 +4,7 @@
     
     Constants
     ---------
-        - `pbcolors`
+        - `pb_colors`
             - `Vector{RGB}`
             - color sequence to encode passbands
     
@@ -38,11 +38,11 @@ module FormattingUtils
 #intradependencies
 
 #%%exports
-export pbcolors
+export pb_colors
 export printlog
 
 #%%constants
-const pbcolors = [  #base colors for passbands
+const pb_colors = [  #base colors for passbands
     colorant"hsl(310,50%,31%)",     #fuv
     colorant"hsl(310,100%,31%)",    #nuv
     colorant"hsl(210,100%,31%)",    #b
