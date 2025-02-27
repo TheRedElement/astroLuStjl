@@ -1,9 +1,9 @@
 
-#TODO: implement examples
-
 """
     - module implementing methods to load different file structures
 
+    Constants
+    ---------
     Structs
     -------
 

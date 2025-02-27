@@ -1,6 +1,8 @@
 """
     - module implementing functions for data preprocessing
 
+    Constants
+    ---------
     
     Structs
     -------

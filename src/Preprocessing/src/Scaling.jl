@@ -1,6 +1,9 @@
 """
     - module implementing structs and methods for feature scaling
     
+    Constants
+    ---------
+    
     Structs
     -------
         - `MinMaxScaler`

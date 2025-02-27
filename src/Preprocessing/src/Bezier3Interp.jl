@@ -4,6 +4,9 @@
     - a detailed explanation for the derivations can be found here
         - [https://omaraflak.medium.com/b%C3%A9zier-interpolation-8033e9a262c2](https://omaraflak.medium.com/b%C3%A9zier-interpolation-8033e9a262c2) (last access: 2024/10/07)
 
+    Constants
+    ---------
+    
     Structs
     -------
         - `Bz3Interp`

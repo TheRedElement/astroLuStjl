@@ -3,6 +3,9 @@
 """
     - module implementing functionalities for monitoring executions of scripts, functions etc.
 
+    Constants
+    ---------
+    
     Structs
     -------
     

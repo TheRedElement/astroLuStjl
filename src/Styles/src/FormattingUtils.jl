@@ -1,9 +1,13 @@
 
-#TODO: docstrings + formatting of code
-
 """
     - module implementing methods for custom formatting
-
+    
+    Constants
+    ---------
+        - `pbcolors`
+            - `Vector{RGB}`
+            - color sequence to encode passbands
+    
     Structs
     -------
 
@@ -34,8 +38,22 @@ module FormattingUtils
 #intradependencies
 
 #%%exports
+export pbcolors
 export printlog
 
+#%%constants
+const pbcolors = [  #base colors for passbands
+    colorant"hsl(310,50%,31%)",     #fuv
+    colorant"hsl(310,100%,31%)",    #nuv
+    colorant"hsl(210,100%,31%)",    #b
+    colorant"hsl(90,100%,31%)",     #g
+    colorant"hsl(60,100%,31%)",     #y
+    colorant"hsl(0,100%,31%)",      #r #colorant("rgb(161,0,0))
+    colorant"hsl(0,50%,31%)",       #nir
+    colorant"hsl(0,30%,31%)",       #fir
+]
+
+#%%definitions
 """
     - function to print a formatted logging message
 

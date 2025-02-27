@@ -1,6 +1,8 @@
 """
     - module implementing methods for outlier removal
 
+    Constants
+    ---------
     
     Structs
     -------

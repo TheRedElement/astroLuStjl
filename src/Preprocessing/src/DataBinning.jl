@@ -1,6 +1,8 @@
 """
     - module implementing data binning
-
+    
+    Constants
+    ---------
     
     Structs
     -------
